@@ -4,7 +4,7 @@
 //_\SV
    // Include Tiny Tapeout Lab.
    // Included URL: "https://raw.githubusercontent.com/os-fpga/Virtual-FPGA-Lab/35e36bd144fddd75495d4cbc01c4fc50ac5bde6f/tlv_lib/tiny_tapeout_lib.tlv"// Included URL: "https://raw.githubusercontent.com/os-fpga/Virtual-FPGA-Lab/a069f1e4e19adc829b53237b3e0b5d6763dc3194/tlv_lib/fpga_includes.tlv"
-//_\source top.tlv 86
+//_\source top.tlv 99
 
 // +++++++INSERT CODE++++++++++++++INSERT CODE++++++++++++++INSERT CODE++++++++++++++INSERT CODE++++++++++++++INSERT CODE++++++++++++++INSERT CODE+++++++
 // +++++++INSERT CODE++++++++++++++INSERT CODE++++++++++++++INSERT CODE++++++++++++++INSERT CODE++++++++++++++INSERT CODE++++++++++++++INSERT CODE+++++++
@@ -118,17 +118,23 @@ logic [20:0] FpgaPins_Fpga_TIME_cnt_a0,
 logic [3:0] FpgaPins_Fpga_TIME_digit_a0;
 
 // For /fpga_pins/fpga|time$ones.
-logic [3:0] FpgaPins_Fpga_TIME_ones_a0;
-
-// For /fpga_pins/fpga|time$pulse.
-logic FpgaPins_Fpga_TIME_pulse_a0,
-      FpgaPins_Fpga_TIME_pulse_a1;
+logic [3:0] FpgaPins_Fpga_TIME_ones_a0,
+            FpgaPins_Fpga_TIME_ones_a1;
 
 // For /fpga_pins/fpga|time$reset.
 logic FpgaPins_Fpga_TIME_reset_a0;
 
+// For /fpga_pins/fpga|time$sec_cnt.
+logic [6:0] FpgaPins_Fpga_TIME_sec_cnt_a0,
+            FpgaPins_Fpga_TIME_sec_cnt_a1;
+
 // For /fpga_pins/fpga|time$tens.
-logic [3:0] FpgaPins_Fpga_TIME_tens_a0;
+logic [3:0] FpgaPins_Fpga_TIME_tens_a0,
+            FpgaPins_Fpga_TIME_tens_a1;
+
+// For /fpga_pins/fpga|time$time_clk.
+logic FpgaPins_Fpga_TIME_time_clk_a0,
+      FpgaPins_Fpga_TIME_time_clk_a1;
 
 
 
@@ -154,8 +160,17 @@ logic [3:0] FpgaPins_Fpga_TIME_tens_a0;
             // Staging of $cnt.
             always_ff @(posedge clk) FpgaPins_Fpga_TIME_cnt_a1[20:0] <= FpgaPins_Fpga_TIME_cnt_a0[20:0];
 
-            // Staging of $pulse.
-            always_ff @(posedge clk) FpgaPins_Fpga_TIME_pulse_a1 <= FpgaPins_Fpga_TIME_pulse_a0;
+            // Staging of $ones.
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_ones_a1[3:0] <= FpgaPins_Fpga_TIME_ones_a0[3:0];
+
+            // Staging of $sec_cnt.
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_sec_cnt_a1[6:0] <= FpgaPins_Fpga_TIME_sec_cnt_a0[6:0];
+
+            // Staging of $tens.
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_tens_a1[3:0] <= FpgaPins_Fpga_TIME_tens_a0[3:0];
+
+            // Staging of $time_clk.
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_time_clk_a1 <= FpgaPins_Fpga_TIME_time_clk_a0;
 
 
 
@@ -217,12 +232,14 @@ logic [3:0] FpgaPins_Fpga_TIME_tens_a0;
                assign \///@0$digit = FpgaPins_Fpga_TIME_digit_a0;
                (* keep *) logic [3:0] \///@0$ones ;
                assign \///@0$ones = FpgaPins_Fpga_TIME_ones_a0;
-               (* keep *) logic  \///@0$pulse ;
-               assign \///@0$pulse = FpgaPins_Fpga_TIME_pulse_a0;
                (* keep *) logic  \///@0$reset ;
                assign \///@0$reset = FpgaPins_Fpga_TIME_reset_a0;
+               (* keep *) logic [6:0] \///@0$sec_cnt ;
+               assign \///@0$sec_cnt = FpgaPins_Fpga_TIME_sec_cnt_a0;
                (* keep *) logic [3:0] \///@0$tens ;
                assign \///@0$tens = FpgaPins_Fpga_TIME_tens_a0;
+               (* keep *) logic  \///@0$time_clk ;
+               assign \///@0$time_clk = FpgaPins_Fpga_TIME_time_clk_a0;
             end
          end
       end
@@ -242,7 +259,7 @@ logic [3:0] FpgaPins_Fpga_TIME_tens_a0;
 //_\TLV
    /* verilator lint_off UNOPTFLAT */
    // Connect Tiny Tapeout I/Os to Virtual FPGA Lab.
-   //_\source /raw.githubusercontent.com/osfpga/VirtualFPGALab/35e36bd144fddd75495d4cbc01c4fc50ac5bde6f/tlvlib/tinytapeoutlib.tlv 76   // Instantiated from top.tlv, 158 as: m5+tt_connections()
+   //_\source /raw.githubusercontent.com/osfpga/VirtualFPGALab/35e36bd144fddd75495d4cbc01c4fc50ac5bde6f/tlvlib/tinytapeoutlib.tlv 76   // Instantiated from top.tlv, 171 as: m5+tt_connections()
       assign L0_slideswitch_a0[7:0] = ui_in;
       assign L0_sseg_segment_n_a0[6:0] = ~ uo_out[6:0];
       assign L0_sseg_decimal_point_n_a0 = ~ uo_out[7];
@@ -250,7 +267,7 @@ logic [3:0] FpgaPins_Fpga_TIME_tens_a0;
    //_\end_source
 
    // Instantiate the Virtual FPGA Lab.
-   //_\source /raw.githubusercontent.com/osfpga/VirtualFPGALab/a069f1e4e19adc829b53237b3e0b5d6763dc3194/tlvlib/fpgaincludes.tlv 307   // Instantiated from top.tlv, 161 as: m5+board(/top, /fpga, 7, $, , my_design)
+   //_\source /raw.githubusercontent.com/osfpga/VirtualFPGALab/a069f1e4e19adc829b53237b3e0b5d6763dc3194/tlvlib/fpgaincludes.tlv 307   // Instantiated from top.tlv, 174 as: m5+board(/top, /fpga, 7, $, , my_design)
       
       //_\source /raw.githubusercontent.com/osfpga/VirtualFPGALab/a069f1e4e19adc829b53237b3e0b5d6763dc3194/tlvlib/fpgaincludes.tlv 355   // Instantiated from /raw.githubusercontent.com/osfpga/VirtualFPGALab/a069f1e4e19adc829b53237b3e0b5d6763dc3194/tlvlib/fpgaincludes.tlv, 309 as: m4+thanks(m5__l(309)m5_eval(m5_get(BOARD_THANKS_ARGS)))
          //_/thanks
@@ -276,12 +293,25 @@ logic [3:0] FpgaPins_Fpga_TIME_tens_a0;
             
                      assign FpgaPins_Fpga_TIME_cnt_a0[20:0] =
                         FpgaPins_Fpga_TIME_reset_a0 ? 0 :
-                        FpgaPins_Fpga_TIME_pulse_a1 ? 0 :
+                        FpgaPins_Fpga_TIME_time_clk_a1 ? 0 :
                         (1 + FpgaPins_Fpga_TIME_cnt_a1);
-                     assign FpgaPins_Fpga_TIME_pulse_a0 = (FpgaPins_Fpga_TIME_cnt_a0 == 21'b111101000010010000000);
             
-                     assign FpgaPins_Fpga_TIME_tens_a0[3:0] = 4'd1;
-                     assign FpgaPins_Fpga_TIME_ones_a0[3:0] = 4'd3;
+                     assign FpgaPins_Fpga_TIME_time_clk_a0 = (FpgaPins_Fpga_TIME_cnt_a0 == 21'b111101000010010000000);
+            
+                     // 100 in binary 1100100
+                     assign FpgaPins_Fpga_TIME_sec_cnt_a0[6:0] =
+                        FpgaPins_Fpga_TIME_reset_a0 ? 0 :
+                        (1 + FpgaPins_Fpga_TIME_sec_cnt_a1);
+            
+                     assign FpgaPins_Fpga_TIME_tens_a0[3:0] =
+                        (FpgaPins_Fpga_TIME_time_clk_a1 && (FpgaPins_Fpga_TIME_tens_a0 != 4'd9)) ? (FpgaPins_Fpga_TIME_tens_a0 + 4'd1) :
+                        (FpgaPins_Fpga_TIME_time_clk_a1 && (FpgaPins_Fpga_TIME_tens_a0 == 4'd9)) ? 4'd0 :
+                        FpgaPins_Fpga_TIME_tens_a1;
+            
+                     assign FpgaPins_Fpga_TIME_ones_a0[3:0] =
+                        (FpgaPins_Fpga_TIME_time_clk_a1 && (FpgaPins_Fpga_TIME_ones_a0 != 4'd9)) ? (FpgaPins_Fpga_TIME_ones_a0 + 4'd1) :
+                        (FpgaPins_Fpga_TIME_time_clk_a1 && (FpgaPins_Fpga_TIME_ones_a0 == 4'd9)) ? 4'd0 :
+                        FpgaPins_Fpga_TIME_ones_a1;
             
                      assign FpgaPins_Fpga_TIME_digit_a0[3:0] = FpgaPins_Fpga_TIME_clk_disp_a0 ? FpgaPins_Fpga_TIME_tens_a0 : FpgaPins_Fpga_TIME_ones_a0;
             
@@ -339,7 +369,7 @@ logic [3:0] FpgaPins_Fpga_TIME_tens_a0;
       
    //_\end_source
    // Label the switch inputs [0..7] (1..8 on the physical switch panel) (top-to-bottom).
-   //_\source /raw.githubusercontent.com/osfpga/VirtualFPGALab/35e36bd144fddd75495d4cbc01c4fc50ac5bde6f/tlvlib/tinytapeoutlib.tlv 82   // Instantiated from top.tlv, 163 as: m5+tt_input_labels_viz(⌈"UNUSED", "UNUSED", "UNUSED", "UNUSED", "UNUSED", "UNUSED", "UNUSED", "UNUSED"⌉)
+   //_\source /raw.githubusercontent.com/osfpga/VirtualFPGALab/35e36bd144fddd75495d4cbc01c4fc50ac5bde6f/tlvlib/tinytapeoutlib.tlv 82   // Instantiated from top.tlv, 176 as: m5+tt_input_labels_viz(⌈"UNUSED", "UNUSED", "UNUSED", "UNUSED", "UNUSED", "UNUSED", "UNUSED", "UNUSED"⌉)
       for (input_label = 0; input_label <= 7; input_label++) begin : L1_InputLabel //_/input_label
          
       end
