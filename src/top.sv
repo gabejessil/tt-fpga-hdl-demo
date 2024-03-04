@@ -121,7 +121,8 @@ logic [3:0] FpgaPins_Fpga_TIME_digit_a0;
 logic [3:0] FpgaPins_Fpga_TIME_ones_a0;
 
 // For /fpga_pins/fpga|time$pulse.
-logic FpgaPins_Fpga_TIME_pulse_a0;
+logic FpgaPins_Fpga_TIME_pulse_a0,
+      FpgaPins_Fpga_TIME_pulse_a1;
 
 // For /fpga_pins/fpga|time$reset.
 logic FpgaPins_Fpga_TIME_reset_a0;
@@ -152,6 +153,9 @@ logic [3:0] FpgaPins_Fpga_TIME_tens_a0;
 
             // Staging of $cnt.
             always_ff @(posedge clk) FpgaPins_Fpga_TIME_cnt_a1[20:0] <= FpgaPins_Fpga_TIME_cnt_a0[20:0];
+
+            // Staging of $pulse.
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_pulse_a1 <= FpgaPins_Fpga_TIME_pulse_a0;
 
 
 
@@ -272,7 +276,7 @@ logic [3:0] FpgaPins_Fpga_TIME_tens_a0;
             
                      assign FpgaPins_Fpga_TIME_cnt_a0[20:0] =
                         FpgaPins_Fpga_TIME_reset_a0 ? 0 :
-                        FpgaPins_Fpga_TIME_pulse_a0 ? 0 :
+                        FpgaPins_Fpga_TIME_pulse_a1 ? 0 :
                         (1 + FpgaPins_Fpga_TIME_cnt_a1);
                      assign FpgaPins_Fpga_TIME_pulse_a0 = FpgaPins_Fpga_TIME_cnt_a0 == 21'b111101000010010000000;
             
