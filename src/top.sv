@@ -278,7 +278,7 @@ logic [3:0] FpgaPins_Fpga_TIME_tens_a0;
                         FpgaPins_Fpga_TIME_reset_a0 ? 0 :
                         FpgaPins_Fpga_TIME_pulse_a1 ? 0 :
                         (1 + FpgaPins_Fpga_TIME_cnt_a1);
-                     assign FpgaPins_Fpga_TIME_pulse_a0 = FpgaPins_Fpga_TIME_cnt_a0 == 21'b111101000010010000000;
+                     assign FpgaPins_Fpga_TIME_pulse_a0 = (FpgaPins_Fpga_TIME_cnt_a0 == 21'b111101000010010000000);
             
                      assign FpgaPins_Fpga_TIME_tens_a0[3:0] = 4'd1;
                      assign FpgaPins_Fpga_TIME_ones_a0[3:0] = 4'd3;
@@ -287,16 +287,16 @@ logic [3:0] FpgaPins_Fpga_TIME_tens_a0;
             
                      // decodes either tens or ones place to the seven-segments
                      assign uo_out[7:0] = {FpgaPins_Fpga_TIME_clk_disp_a0,
-                        ((FpgaPins_Fpga_TIME_digit_a0 == 4'd0) && FpgaPins_Fpga_TIME_pulse_a0) ? 7'b0111111 :
-                        ((FpgaPins_Fpga_TIME_digit_a0 == 4'd1) && FpgaPins_Fpga_TIME_pulse_a0) ? 7'b0000110 :
-                        ((FpgaPins_Fpga_TIME_digit_a0 == 4'd2) && FpgaPins_Fpga_TIME_pulse_a0) ? 7'b1011011 :
-                        ((FpgaPins_Fpga_TIME_digit_a0 == 4'd3) && FpgaPins_Fpga_TIME_pulse_a0) ? 7'b1001111 :
-                        ((FpgaPins_Fpga_TIME_digit_a0 == 4'd4) && FpgaPins_Fpga_TIME_pulse_a0) ? 7'b1100110 :
-                        ((FpgaPins_Fpga_TIME_digit_a0 == 4'd5) && FpgaPins_Fpga_TIME_pulse_a0) ? 7'b1101101 :
-                        ((FpgaPins_Fpga_TIME_digit_a0 == 4'd6) && FpgaPins_Fpga_TIME_pulse_a0) ? 7'b1111101 :
-                        ((FpgaPins_Fpga_TIME_digit_a0 == 4'd7) && FpgaPins_Fpga_TIME_pulse_a0) ? 7'b0000111 :
-                        ((FpgaPins_Fpga_TIME_digit_a0 == 4'd8) && FpgaPins_Fpga_TIME_pulse_a0) ? 7'b1111111 :
-                        ((FpgaPins_Fpga_TIME_digit_a0 == 4'd9) && FpgaPins_Fpga_TIME_pulse_a0) ? 7'b1101111 :
+                        (FpgaPins_Fpga_TIME_digit_a0 == 4'd0) ? 7'b0111111 :
+                        (FpgaPins_Fpga_TIME_digit_a0 == 4'd1) ? 7'b0000110 :
+                        (FpgaPins_Fpga_TIME_digit_a0 == 4'd2) ? 7'b1011011 :
+                        (FpgaPins_Fpga_TIME_digit_a0 == 4'd3) ? 7'b1001111 :
+                        (FpgaPins_Fpga_TIME_digit_a0 == 4'd4) ? 7'b1100110 :
+                        (FpgaPins_Fpga_TIME_digit_a0 == 4'd5) ? 7'b1101101 :
+                        (FpgaPins_Fpga_TIME_digit_a0 == 4'd6) ? 7'b1111101 :
+                        (FpgaPins_Fpga_TIME_digit_a0 == 4'd7) ? 7'b0000111 :
+                        (FpgaPins_Fpga_TIME_digit_a0 == 4'd8) ? 7'b1111111 :
+                        (FpgaPins_Fpga_TIME_digit_a0 == 4'd9) ? 7'b1101111 :
                                          7'b0000000};
             
             
