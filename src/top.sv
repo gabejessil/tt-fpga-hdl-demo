@@ -383,7 +383,7 @@ logic FpgaPins_Fpga_TIME_time_clk_a0,
                      //after X time disp hides so player can asnwer
                      assign FpgaPins_Fpga_TIME_hide_a0 =
                         FpgaPins_Fpga_TIME_reset_a0 || (FpgaPins_Fpga_TIME_btn_a0 == 4'd2) || (FpgaPins_Fpga_TIME_btn_a0 == 4'd4) ? 0 :
-                        (FpgaPins_Fpga_TIME_ones_a1 == 4'd7) && (FpgaPins_Fpga_TIME_tens_a1 == 4'd8) ? 1 :
+                        (FpgaPins_Fpga_TIME_ones_a1 == 4'd5) && (FpgaPins_Fpga_TIME_tens_a1 == 4'd8) ? 1 :
                         FpgaPins_Fpga_TIME_hide_a1 ? 1 :
                         0;
             
