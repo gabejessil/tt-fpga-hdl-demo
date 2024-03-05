@@ -261,15 +261,15 @@ logic [3:0] FpgaPins_Fpga_TIME_tens_a0;
                         FpgaPins_Fpga_TIME_btn_a0 == 4'd0 ? 4'd0 :
                         FpgaPins_Fpga_TIME_btn_a0 == 4'd1 ? 4'd1 :
                         FpgaPins_Fpga_TIME_btn_a0 == 4'd2 ? 4'd2 :
-                        FpgaPins_Fpga_TIME_btn_a0 == 4'd3 ? 4'd3 :
-                        FpgaPins_Fpga_TIME_btn_a0 == 4'd4 ? 4'd4 :
+                        FpgaPins_Fpga_TIME_btn_a0 == 4'd4 ? 4'd3 :
+                        FpgaPins_Fpga_TIME_btn_a0 == 4'd8 ? 4'd4 :
                            4'd9;
                      assign FpgaPins_Fpga_TIME_ones_a0[3:0] =
                         FpgaPins_Fpga_TIME_btn_a0 == 4'd0 ? 4'd0 :
                         FpgaPins_Fpga_TIME_btn_a0 == 4'd1 ? 4'd1 :
                         FpgaPins_Fpga_TIME_btn_a0 == 4'd2 ? 4'd2 :
-                        FpgaPins_Fpga_TIME_btn_a0 == 4'd3 ? 4'd3 :
-                        FpgaPins_Fpga_TIME_btn_a0 == 4'd4 ? 4'd4 :
+                        FpgaPins_Fpga_TIME_btn_a0 == 4'd4 ? 4'd3 :
+                        FpgaPins_Fpga_TIME_btn_a0 == 4'd8 ? 4'd4 :
                            4'd9;
             
                      assign FpgaPins_Fpga_TIME_digit_a0[3:0] = FpgaPins_Fpga_TIME_clk_disp_a0 ? FpgaPins_Fpga_TIME_tens_a0 : FpgaPins_Fpga_TIME_ones_a0;
