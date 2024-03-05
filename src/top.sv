@@ -363,7 +363,7 @@ logic FpgaPins_Fpga_TIME_time_clk_a0,
             
                      // begins the countdown display
                      assign FpgaPins_Fpga_TIME_start_a0 =
-                        FpgaPins_Fpga_TIME_reset_a0 || (FpgaPins_Fpga_TIME_btn_a0 == 4'd2) || (FpgaPins_Fpga_TIME_btn_a0 == 4'd4) ? 0 :
+                        FpgaPins_Fpga_TIME_reset_a0 || (FpgaPins_Fpga_TIME_btn_a0 == 4'd2) ? 0 :
                         FpgaPins_Fpga_TIME_start_a1 ? 1 :
                         FpgaPins_Fpga_TIME_btn_a0 == 4'd1 ? 1 :
                         0;
@@ -377,20 +377,20 @@ logic FpgaPins_Fpga_TIME_time_clk_a0,
                      assign FpgaPins_Fpga_TIME_ones_a0[3:0] =
                         FpgaPins_Fpga_TIME_reset_a0 ? 4'd10 :
                         (FpgaPins_Fpga_TIME_btn_a0 == 4'd0) && !FpgaPins_Fpga_TIME_start_a0 && !FpgaPins_Fpga_TIME_pause_a0 ? 4'd10 :
-                        (FpgaPins_Fpga_TIME_btn_a0 == 4'd4) ? FpgaPins_Fpga_TIME_ones_a1 :
+                        (FpgaPins_Fpga_TIME_btn_a0 == 4'd4) || FpgaPins_Fpga_TIME_pause_a0 ? FpgaPins_Fpga_TIME_ones_a1 :
                         (FpgaPins_Fpga_TIME_ones_a1 == 4'd0) && (FpgaPins_Fpga_TIME_tens_a1 == 4'd0) ? 4'd0 :
                         FpgaPins_Fpga_TIME_time_clk_a1 && (FpgaPins_Fpga_TIME_ones_a1 != 4'd0) && FpgaPins_Fpga_TIME_start_a0 ? (FpgaPins_Fpga_TIME_ones_a1 - 4'd1) :
                         FpgaPins_Fpga_TIME_time_clk_a1 && (FpgaPins_Fpga_TIME_ones_a1 == 4'd0) && FpgaPins_Fpga_TIME_start_a0 ? 4'd9 :
-                        FpgaPins_Fpga_TIME_ones_a1;
+                        4'd10;
                      //right disp
                      assign FpgaPins_Fpga_TIME_tens_a0[3:0] =
                         FpgaPins_Fpga_TIME_reset_a0 ? 4'd10 :
                         (FpgaPins_Fpga_TIME_btn_a0 == 4'd0) && !FpgaPins_Fpga_TIME_start_a0 && !FpgaPins_Fpga_TIME_pause_a0 ? 4'd10 :
-                        (FpgaPins_Fpga_TIME_btn_a0 == 4'd4) ? FpgaPins_Fpga_TIME_tens_a1 :
+                        (FpgaPins_Fpga_TIME_btn_a0 == 4'd4) || FpgaPins_Fpga_TIME_pause_a0 ? FpgaPins_Fpga_TIME_tens_a1 :
                         (FpgaPins_Fpga_TIME_ones_a1 == 4'd0) && (FpgaPins_Fpga_TIME_tens_a1 == 4'd0) ? 4'd0 :
                         (FpgaPins_Fpga_TIME_sec_cnt_a1 == 4'd10) && (FpgaPins_Fpga_TIME_tens_a1 != 4'd0) && FpgaPins_Fpga_TIME_start_a0 ? (FpgaPins_Fpga_TIME_tens_a1 - 4'd1) :
                         (FpgaPins_Fpga_TIME_sec_cnt_a1 == 4'd10) && (FpgaPins_Fpga_TIME_tens_a1 == 4'd0) && FpgaPins_Fpga_TIME_start_a0 ? 4'd9 :
-                        FpgaPins_Fpga_TIME_tens_a1;
+                        4'd10;
             
                      assign FpgaPins_Fpga_TIME_digit_a0[3:0] = FpgaPins_Fpga_TIME_clk_disp_a0 ? FpgaPins_Fpga_TIME_tens_a0 : FpgaPins_Fpga_TIME_ones_a0;
             
