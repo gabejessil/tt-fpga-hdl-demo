@@ -331,7 +331,7 @@ logic FpgaPins_Fpga_TIME_time_clk_a0,
                         0;
                      //game is paused when user clicks button 2
                      assign FpgaPins_Fpga_TIME_pause_a0 =
-                        FpgaPins_Fpga_TIME_reset_a0 ? 0 :
+                        FpgaPins_Fpga_TIME_reset_a0 || (FpgaPins_Fpga_TIME_btn_a0 == 4'd2) ? 0 :
                         (FpgaPins_Fpga_TIME_btn_a0 == 4'd4) ? 1 :
                         FpgaPins_Fpga_TIME_pause_a1 ? 1 :
                         0;
