@@ -409,9 +409,9 @@ logic FpgaPins_Fpga_TIME_time_clk_a0,
                         0;
                      //random counter to select goal time
                      assign FpgaPins_Fpga_TIME_rand_cnt_a0[2:0] =
-                        FpgaPins_Fpga_TIME_reset_a0 ? 4'd0 :
-                        (FpgaPins_Fpga_TIME_rand_cnt_a1 == 3'd4) ? 4'd0 :
-                        (4'd1 + FpgaPins_Fpga_TIME_rand_cnt_a1);
+                        FpgaPins_Fpga_TIME_reset_a0 ? 3'd0 :
+                        (FpgaPins_Fpga_TIME_rand_cnt_a1 == 3'd4) ? 3'd0 :
+                        (3'd1 + FpgaPins_Fpga_TIME_rand_cnt_a1);
                      //random goal value, 5.0-9.0 by 1.0 each step
                      assign FpgaPins_Fpga_TIME_rand_goal_a0[7:0] =
                         FpgaPins_Fpga_TIME_reset_a0 ? {4'd5,4'd0} :
