@@ -153,7 +153,11 @@ logic [7:0] FpgaPins_Fpga_TIME_p1_score_a0,
 
 // For /fpga_pins/fpga|time$p1_sub.
 logic FpgaPins_Fpga_TIME_p1_sub_a0,
-      FpgaPins_Fpga_TIME_p1_sub_a1;
+      FpgaPins_Fpga_TIME_p1_sub_a1,
+      FpgaPins_Fpga_TIME_p1_sub_a2,
+      FpgaPins_Fpga_TIME_p1_sub_a3,
+      FpgaPins_Fpga_TIME_p1_sub_a4,
+      FpgaPins_Fpga_TIME_p1_sub_a5;
 
 // For /fpga_pins/fpga|time$p2_ans.
 logic [7:0] FpgaPins_Fpga_TIME_p2_ans_a0,
@@ -165,7 +169,11 @@ logic [7:0] FpgaPins_Fpga_TIME_p2_score_a0,
 
 // For /fpga_pins/fpga|time$p2_sub.
 logic FpgaPins_Fpga_TIME_p2_sub_a0,
-      FpgaPins_Fpga_TIME_p2_sub_a1;
+      FpgaPins_Fpga_TIME_p2_sub_a1,
+      FpgaPins_Fpga_TIME_p2_sub_a2,
+      FpgaPins_Fpga_TIME_p2_sub_a3,
+      FpgaPins_Fpga_TIME_p2_sub_a4,
+      FpgaPins_Fpga_TIME_p2_sub_a5;
 
 // For /fpga_pins/fpga|time$rand_cnt.
 logic [2:0] FpgaPins_Fpga_TIME_rand_cnt_a0,
@@ -253,6 +261,10 @@ logic [1:0] FpgaPins_Fpga_TIME_winner_a0,
 
             // Staging of $p1_sub.
             always_ff @(posedge clk) FpgaPins_Fpga_TIME_p1_sub_a1 <= FpgaPins_Fpga_TIME_p1_sub_a0;
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_p1_sub_a2 <= FpgaPins_Fpga_TIME_p1_sub_a1;
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_p1_sub_a3 <= FpgaPins_Fpga_TIME_p1_sub_a2;
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_p1_sub_a4 <= FpgaPins_Fpga_TIME_p1_sub_a3;
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_p1_sub_a5 <= FpgaPins_Fpga_TIME_p1_sub_a4;
 
             // Staging of $p2_ans.
             always_ff @(posedge clk) FpgaPins_Fpga_TIME_p2_ans_a1[7:0] <= FpgaPins_Fpga_TIME_p2_ans_a0[7:0];
@@ -262,6 +274,10 @@ logic [1:0] FpgaPins_Fpga_TIME_winner_a0,
 
             // Staging of $p2_sub.
             always_ff @(posedge clk) FpgaPins_Fpga_TIME_p2_sub_a1 <= FpgaPins_Fpga_TIME_p2_sub_a0;
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_p2_sub_a2 <= FpgaPins_Fpga_TIME_p2_sub_a1;
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_p2_sub_a3 <= FpgaPins_Fpga_TIME_p2_sub_a2;
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_p2_sub_a4 <= FpgaPins_Fpga_TIME_p2_sub_a3;
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_p2_sub_a5 <= FpgaPins_Fpga_TIME_p2_sub_a4;
 
             // Staging of $rand_cnt.
             always_ff @(posedge clk) FpgaPins_Fpga_TIME_rand_cnt_a1[2:0] <= FpgaPins_Fpga_TIME_rand_cnt_a0[2:0];
@@ -523,7 +539,7 @@ logic [1:0] FpgaPins_Fpga_TIME_winner_a0,
                      //determines the winner of the game, 0 is a tie, 1 is player 1, 2 is player 2
                      assign FpgaPins_Fpga_TIME_winner_a0[1:0] =
                         FpgaPins_Fpga_TIME_reset_a0 || (FpgaPins_Fpga_TIME_btn_a0 == 4'd2) ? 2'd3 :
-                        FpgaPins_Fpga_TIME_p1_sub_a1 && FpgaPins_Fpga_TIME_p2_sub_a1 ? FpgaPins_Fpga_TIME_winner_a1 :
+                        FpgaPins_Fpga_TIME_p1_sub_a5 && FpgaPins_Fpga_TIME_p2_sub_a5 ? FpgaPins_Fpga_TIME_winner_a1 :
                         FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && FpgaPins_Fpga_TIME_p1_score_a0[7:4]>FpgaPins_Fpga_TIME_p2_score_a0[7:4] ? 2'd2 :
                         FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && FpgaPins_Fpga_TIME_p1_score_a0[7:4]<FpgaPins_Fpga_TIME_p2_score_a0[7:4] ? 2'd1 :
                         FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && FpgaPins_Fpga_TIME_p1_score_a0[3:0]>FpgaPins_Fpga_TIME_p2_score_a0[3:0] ? 2'd2 :
