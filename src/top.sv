@@ -116,7 +116,17 @@ logic FpgaPins_Fpga_TIME_clk_disp_a0,
       FpgaPins_Fpga_TIME_clk_disp_a7,
       FpgaPins_Fpga_TIME_clk_disp_a8,
       FpgaPins_Fpga_TIME_clk_disp_a9,
-      FpgaPins_Fpga_TIME_clk_disp_a10;
+      FpgaPins_Fpga_TIME_clk_disp_a10,
+      FpgaPins_Fpga_TIME_clk_disp_a11,
+      FpgaPins_Fpga_TIME_clk_disp_a12,
+      FpgaPins_Fpga_TIME_clk_disp_a13,
+      FpgaPins_Fpga_TIME_clk_disp_a14,
+      FpgaPins_Fpga_TIME_clk_disp_a15,
+      FpgaPins_Fpga_TIME_clk_disp_a16,
+      FpgaPins_Fpga_TIME_clk_disp_a17,
+      FpgaPins_Fpga_TIME_clk_disp_a18,
+      FpgaPins_Fpga_TIME_clk_disp_a19,
+      FpgaPins_Fpga_TIME_clk_disp_a20;
 
 // For /fpga_pins/fpga|time$cnt.
 logic [20:0] FpgaPins_Fpga_TIME_cnt_a0,
@@ -215,6 +225,16 @@ logic [1:0] FpgaPins_Fpga_TIME_winner_a0,
             always_ff @(posedge clk) FpgaPins_Fpga_TIME_clk_disp_a8 <= FpgaPins_Fpga_TIME_clk_disp_a7;
             always_ff @(posedge clk) FpgaPins_Fpga_TIME_clk_disp_a9 <= FpgaPins_Fpga_TIME_clk_disp_a8;
             always_ff @(posedge clk) FpgaPins_Fpga_TIME_clk_disp_a10 <= FpgaPins_Fpga_TIME_clk_disp_a9;
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_clk_disp_a11 <= FpgaPins_Fpga_TIME_clk_disp_a10;
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_clk_disp_a12 <= FpgaPins_Fpga_TIME_clk_disp_a11;
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_clk_disp_a13 <= FpgaPins_Fpga_TIME_clk_disp_a12;
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_clk_disp_a14 <= FpgaPins_Fpga_TIME_clk_disp_a13;
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_clk_disp_a15 <= FpgaPins_Fpga_TIME_clk_disp_a14;
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_clk_disp_a16 <= FpgaPins_Fpga_TIME_clk_disp_a15;
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_clk_disp_a17 <= FpgaPins_Fpga_TIME_clk_disp_a16;
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_clk_disp_a18 <= FpgaPins_Fpga_TIME_clk_disp_a17;
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_clk_disp_a19 <= FpgaPins_Fpga_TIME_clk_disp_a18;
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_clk_disp_a20 <= FpgaPins_Fpga_TIME_clk_disp_a19;
 
             // Staging of $cnt.
             always_ff @(posedge clk) FpgaPins_Fpga_TIME_cnt_a1[20:0] <= FpgaPins_Fpga_TIME_cnt_a0[20:0];
@@ -400,7 +420,7 @@ logic [1:0] FpgaPins_Fpga_TIME_winner_a0,
                      assign FpgaPins_Fpga_TIME_btn_a0[3:0] = ui_in[3:0];
             
                      // divides clock for better switching on dual seven-segment
-                     assign FpgaPins_Fpga_TIME_clk_disp_a0 = FpgaPins_Fpga_TIME_clk_disp_a10 ? 1'b0 : FpgaPins_Fpga_TIME_clk_disp_a10 + 1'b1;
+                     assign FpgaPins_Fpga_TIME_clk_disp_a0 = FpgaPins_Fpga_TIME_clk_disp_a20 ? 1'b0 : FpgaPins_Fpga_TIME_clk_disp_a20 + 1'b1;
             
                      assign FpgaPins_Fpga_TIME_cnt_a0[20:0] =
                         FpgaPins_Fpga_TIME_reset_a0 ? 0 :
