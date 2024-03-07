@@ -528,7 +528,7 @@ logic [1:0] FpgaPins_Fpga_TIME_winner_a0,
                         FpgaPins_Fpga_TIME_p1_score_a0[7:4]<FpgaPins_Fpga_TIME_p2_score_a0[7:4] ? 2'd1 :
                         FpgaPins_Fpga_TIME_p1_score_a0[3:0]>FpgaPins_Fpga_TIME_p2_score_a0[3:0] ? 2'd2 :
                         FpgaPins_Fpga_TIME_p1_score_a0[3:0]<FpgaPins_Fpga_TIME_p2_score_a0[3:0] ? 2'd1 :
-                        FpgaPins_Fpga_TIME_p1_score_a0[7:0]>FpgaPins_Fpga_TIME_p2_score_a0[7:0] ? 2'd0 :
+                        FpgaPins_Fpga_TIME_p1_score_a0[7:0]==FpgaPins_Fpga_TIME_p2_score_a0[7:0] ? 2'd0 :
                         2'd3;
             
                      assign FpgaPins_Fpga_TIME_digit_a0[3:0] =
