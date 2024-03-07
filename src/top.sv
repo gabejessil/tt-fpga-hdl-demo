@@ -154,8 +154,7 @@ logic [2:0] FpgaPins_Fpga_TIME_rand_cnt_a0,
             FpgaPins_Fpga_TIME_rand_cnt_a1;
 
 // For /fpga_pins/fpga|time$rand_goal.
-logic [7:0] FpgaPins_Fpga_TIME_rand_goal_a0,
-            FpgaPins_Fpga_TIME_rand_goal_a1;
+logic [7:0] FpgaPins_Fpga_TIME_rand_goal_a0;
 
 // For /fpga_pins/fpga|time$reset.
 logic FpgaPins_Fpga_TIME_reset_a0;
@@ -228,9 +227,6 @@ logic FpgaPins_Fpga_TIME_time_clk_a0,
 
             // Staging of $rand_cnt.
             always_ff @(posedge clk) FpgaPins_Fpga_TIME_rand_cnt_a1[2:0] <= FpgaPins_Fpga_TIME_rand_cnt_a0[2:0];
-
-            // Staging of $rand_goal.
-            always_ff @(posedge clk) FpgaPins_Fpga_TIME_rand_goal_a1[7:0] <= FpgaPins_Fpga_TIME_rand_goal_a0[7:0];
 
             // Staging of $sec_cnt.
             always_ff @(posedge clk) FpgaPins_Fpga_TIME_sec_cnt_a1[3:0] <= FpgaPins_Fpga_TIME_sec_cnt_a0[3:0];
@@ -414,14 +410,14 @@ logic FpgaPins_Fpga_TIME_time_clk_a0,
                      //random counter to select goal time
                      assign FpgaPins_Fpga_TIME_rand_cnt_a0[2:0] =
                         FpgaPins_Fpga_TIME_reset_a0 ? 3'd0 :
+                        FpgaPins_Fpga_TIME_start_a0 ? FpgaPins_Fpga_TIME_rand_cnt_a1 :
+                        !FpgaPins_Fpga_TIME_start_a0 && (FpgaPins_Fpga_TIME_start_a1 == 0) ? FpgaPins_Fpga_TIME_rand_cnt_a0 :
                         (FpgaPins_Fpga_TIME_rand_cnt_a1 == 3'd4) ? 3'd0 :
                         (3'd1 + FpgaPins_Fpga_TIME_rand_cnt_a1);
+            
                      //random goal value, 5.0-9.0 by 1.0 each step
                      assign FpgaPins_Fpga_TIME_rand_goal_a0[7:0] =
                         FpgaPins_Fpga_TIME_reset_a0 ? {4'd5,4'd0} :
-                        (FpgaPins_Fpga_TIME_start_a1 == 0) && !FpgaPins_Fpga_TIME_start_a0 ? FpgaPins_Fpga_TIME_rand_goal_a1 :
-                        (FpgaPins_Fpga_TIME_start_a1 == 0) && FpgaPins_Fpga_TIME_start_a0 ? FpgaPins_Fpga_TIME_rand_goal_a1 :
-                        FpgaPins_Fpga_TIME_start_a1 && FpgaPins_Fpga_TIME_start_a0 ? FpgaPins_Fpga_TIME_rand_goal_a1 :
                         (FpgaPins_Fpga_TIME_rand_cnt_a0 == 3'd0) ? {4'd6,4'd0} :
                         (FpgaPins_Fpga_TIME_rand_cnt_a0 == 3'd1) ? {4'd8,4'd0} :
                         (FpgaPins_Fpga_TIME_rand_cnt_a0 == 3'd2) ? {4'd9,4'd0} :
