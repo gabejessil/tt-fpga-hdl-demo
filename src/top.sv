@@ -411,7 +411,7 @@ logic FpgaPins_Fpga_TIME_time_clk_a0,
                      assign FpgaPins_Fpga_TIME_rand_cnt_a0[2:0] =
                         FpgaPins_Fpga_TIME_reset_a0 ? 3'd0 :
                         FpgaPins_Fpga_TIME_start_a0 ? FpgaPins_Fpga_TIME_rand_cnt_a1 :
-                        !FpgaPins_Fpga_TIME_start_a0 && (FpgaPins_Fpga_TIME_start_a1 == 0) ? FpgaPins_Fpga_TIME_rand_cnt_a0 :
+                        !FpgaPins_Fpga_TIME_start_a0 && (FpgaPins_Fpga_TIME_start_a1 == 0) ? FpgaPins_Fpga_TIME_rand_cnt_a1 :
                         (FpgaPins_Fpga_TIME_rand_cnt_a1 == 3'd4) ? 3'd0 :
                         (3'd1 + FpgaPins_Fpga_TIME_rand_cnt_a1);
             
