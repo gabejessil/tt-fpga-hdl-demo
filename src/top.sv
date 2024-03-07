@@ -491,14 +491,14 @@ logic [1:0] FpgaPins_Fpga_TIME_winner_a0,
                      assign FpgaPins_Fpga_TIME_p1_score_a0[7:0] =
                         FpgaPins_Fpga_TIME_reset_a0 || (FpgaPins_Fpga_TIME_btn_a0 == 4'd2) ? 8'd0 :
                         FpgaPins_Fpga_TIME_p1_sub_a1 ? FpgaPins_Fpga_TIME_p1_score_a1 :
-                        FpgaPins_Fpga_TIME_p1_sub_a0 && (FpgaPins_Fpga_TIME_p1_ans_a0[7:0]>=FpgaPins_Fpga_TIME_rand_goal_a0[7:0]) ? {FpgaPins_Fpga_TIME_p1_ans_a0[7:0]-FpgaPins_Fpga_TIME_rand_goal_a0[7:0]} :
-                        FpgaPins_Fpga_TIME_p1_sub_a0 && (FpgaPins_Fpga_TIME_p1_ans_a0[7:0]<=FpgaPins_Fpga_TIME_rand_goal_a0[7:0]) ? {FpgaPins_Fpga_TIME_rand_goal_a0[7:0]-FpgaPins_Fpga_TIME_p1_ans_a0[7:0]} :
+                        FpgaPins_Fpga_TIME_p1_sub_a0 && (FpgaPins_Fpga_TIME_p1_ans_a0[7:4]>=FpgaPins_Fpga_TIME_rand_goal_a0[7:4]) ? {FpgaPins_Fpga_TIME_p1_ans_a0[7:4]-FpgaPins_Fpga_TIME_rand_goal_a0[7:4],FpgaPins_Fpga_TIME_p1_ans_a0[3:0]} :
+                        FpgaPins_Fpga_TIME_p1_sub_a0 && (FpgaPins_Fpga_TIME_p1_ans_a0[7:4]<=FpgaPins_Fpga_TIME_rand_goal_a0[7:4]) ? {FpgaPins_Fpga_TIME_rand_goal_a0[7:4]-FpgaPins_Fpga_TIME_p1_ans_a0[7:4]-4'd1,4'd10-FpgaPins_Fpga_TIME_p1_ans_a0[3:0]} :
                         8'd0;
                      assign FpgaPins_Fpga_TIME_p2_score_a0[7:0] =
                         FpgaPins_Fpga_TIME_reset_a0 || (FpgaPins_Fpga_TIME_btn_a0 == 4'd2) ? 8'd0 :
                         FpgaPins_Fpga_TIME_p2_sub_a1 ? FpgaPins_Fpga_TIME_p2_score_a1 :
-                        FpgaPins_Fpga_TIME_p2_sub_a0 && (FpgaPins_Fpga_TIME_p2_ans_a0[7:0]>=FpgaPins_Fpga_TIME_rand_goal_a0[7:0]) ? {FpgaPins_Fpga_TIME_p2_ans_a0[7:0]-FpgaPins_Fpga_TIME_rand_goal_a0[7:0]} :
-                        FpgaPins_Fpga_TIME_p2_sub_a0 && (FpgaPins_Fpga_TIME_p2_ans_a0[7:0]<=FpgaPins_Fpga_TIME_rand_goal_a0[7:0]) ? {FpgaPins_Fpga_TIME_rand_goal_a0[7:0]-FpgaPins_Fpga_TIME_p2_ans_a0[7:0]} :
+                        FpgaPins_Fpga_TIME_p2_sub_a0 && (FpgaPins_Fpga_TIME_p2_ans_a0[7:4]>=FpgaPins_Fpga_TIME_rand_goal_a0[7:4]) ? {FpgaPins_Fpga_TIME_p2_ans_a0[7:4]-FpgaPins_Fpga_TIME_rand_goal_a0[7:4],FpgaPins_Fpga_TIME_p2_ans_a0[3:0]} :
+                        FpgaPins_Fpga_TIME_p2_sub_a0 && (FpgaPins_Fpga_TIME_p2_ans_a0[7:4]<=FpgaPins_Fpga_TIME_rand_goal_a0[7:4]) ? {FpgaPins_Fpga_TIME_rand_goal_a0[7:4]-FpgaPins_Fpga_TIME_p2_ans_a0[7:4]-4'd1,4'd10-FpgaPins_Fpga_TIME_p2_ans_a0[3:0]} :
                         8'd0;
                      //determines the winner of the game, 0 is a tie, 1 is player 1, 2 is player 2
                      assign FpgaPins_Fpga_TIME_winner_a0[1:0] =
