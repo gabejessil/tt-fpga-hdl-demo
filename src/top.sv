@@ -514,12 +514,12 @@ logic [1:0] FpgaPins_Fpga_TIME_winner_a0,
                      assign FpgaPins_Fpga_TIME_p1_ans_a0[7:0] =
                         FpgaPins_Fpga_TIME_reset_a0 || (FpgaPins_Fpga_TIME_btn_a0 == 4'd2) ? 8'd0 :
                         FpgaPins_Fpga_TIME_p1_sub_a1 ? FpgaPins_Fpga_TIME_p1_ans_a1 :
-                        (FpgaPins_Fpga_TIME_btn_a0 == 4'd4) && FpgaPins_Fpga_TIME_start_a0 ? {FpgaPins_Fpga_TIME_tens_a0[3:0],FpgaPins_Fpga_TIME_ones_a0[3:0]} :
+                        (FpgaPins_Fpga_TIME_btn_a0 == 4'd4) && FpgaPins_Fpga_TIME_start_a1 ? {FpgaPins_Fpga_TIME_tens_a0[3:0],FpgaPins_Fpga_TIME_ones_a0[3:0]} :
                         FpgaPins_Fpga_TIME_p1_ans_a1;
                      assign FpgaPins_Fpga_TIME_p2_ans_a0[7:0] =
                         FpgaPins_Fpga_TIME_reset_a0 || (FpgaPins_Fpga_TIME_btn_a0 == 4'd2) ? 8'd0 :
                         FpgaPins_Fpga_TIME_p2_sub_a1 ? FpgaPins_Fpga_TIME_p2_ans_a1 :
-                        (FpgaPins_Fpga_TIME_btn_a0 == 4'd8) && FpgaPins_Fpga_TIME_start_a0 ? {FpgaPins_Fpga_TIME_tens_a0[3:0],FpgaPins_Fpga_TIME_ones_a0[3:0]} :
+                        (FpgaPins_Fpga_TIME_btn_a0 == 4'd8) && FpgaPins_Fpga_TIME_start_a1 ? {FpgaPins_Fpga_TIME_tens_a0[3:0],FpgaPins_Fpga_TIME_ones_a0[3:0]} :
                         FpgaPins_Fpga_TIME_p2_ans_a1;
                      //determines a players score, calculates how far off a player was
                      assign FpgaPins_Fpga_TIME_p1_score_a0[7:0] =
