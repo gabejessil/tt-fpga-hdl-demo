@@ -4,7 +4,7 @@
 //_\SV
    // Include Tiny Tapeout Lab.
    // Included URL: "https://raw.githubusercontent.com/os-fpga/Virtual-FPGA-Lab/35e36bd144fddd75495d4cbc01c4fc50ac5bde6f/tlv_lib/tiny_tapeout_lib.tlv"// Included URL: "https://raw.githubusercontent.com/os-fpga/Virtual-FPGA-Lab/a069f1e4e19adc829b53237b3e0b5d6763dc3194/tlv_lib/fpga_includes.tlv"
-//_\source top.tlv 175
+//_\source top.tlv 202
 
 // +++++++INSERT CODE++++++++++++++INSERT CODE++++++++++++++INSERT CODE++++++++++++++INSERT CODE++++++++++++++INSERT CODE++++++++++++++INSERT CODE+++++++
 // +++++++INSERT CODE++++++++++++++INSERT CODE++++++++++++++INSERT CODE++++++++++++++INSERT CODE++++++++++++++INSERT CODE++++++++++++++INSERT CODE+++++++
@@ -137,6 +137,10 @@ logic [3:0] FpgaPins_Fpga_TIME_ones_a0,
 logic [7:0] FpgaPins_Fpga_TIME_p1_ans_a0,
             FpgaPins_Fpga_TIME_p1_ans_a1;
 
+// For /fpga_pins/fpga|time$p1_score.
+logic [7:0] FpgaPins_Fpga_TIME_p1_score_a0,
+            FpgaPins_Fpga_TIME_p1_score_a1;
+
 // For /fpga_pins/fpga|time$p1_sub.
 logic FpgaPins_Fpga_TIME_p1_sub_a0,
       FpgaPins_Fpga_TIME_p1_sub_a1;
@@ -144,6 +148,10 @@ logic FpgaPins_Fpga_TIME_p1_sub_a0,
 // For /fpga_pins/fpga|time$p2_ans.
 logic [7:0] FpgaPins_Fpga_TIME_p2_ans_a0,
             FpgaPins_Fpga_TIME_p2_ans_a1;
+
+// For /fpga_pins/fpga|time$p2_score.
+logic [7:0] FpgaPins_Fpga_TIME_p2_score_a0,
+            FpgaPins_Fpga_TIME_p2_score_a1;
 
 // For /fpga_pins/fpga|time$p2_sub.
 logic FpgaPins_Fpga_TIME_p2_sub_a0,
@@ -174,6 +182,10 @@ logic [3:0] FpgaPins_Fpga_TIME_tens_a0,
 // For /fpga_pins/fpga|time$time_clk.
 logic FpgaPins_Fpga_TIME_time_clk_a0,
       FpgaPins_Fpga_TIME_time_clk_a1;
+
+// For /fpga_pins/fpga|time$winner.
+logic [1:0] FpgaPins_Fpga_TIME_winner_a0,
+            FpgaPins_Fpga_TIME_winner_a1;
 
 
 
@@ -216,11 +228,17 @@ logic FpgaPins_Fpga_TIME_time_clk_a0,
             // Staging of $p1_ans.
             always_ff @(posedge clk) FpgaPins_Fpga_TIME_p1_ans_a1[7:0] <= FpgaPins_Fpga_TIME_p1_ans_a0[7:0];
 
+            // Staging of $p1_score.
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_p1_score_a1[7:0] <= FpgaPins_Fpga_TIME_p1_score_a0[7:0];
+
             // Staging of $p1_sub.
             always_ff @(posedge clk) FpgaPins_Fpga_TIME_p1_sub_a1 <= FpgaPins_Fpga_TIME_p1_sub_a0;
 
             // Staging of $p2_ans.
             always_ff @(posedge clk) FpgaPins_Fpga_TIME_p2_ans_a1[7:0] <= FpgaPins_Fpga_TIME_p2_ans_a0[7:0];
+
+            // Staging of $p2_score.
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_p2_score_a1[7:0] <= FpgaPins_Fpga_TIME_p2_score_a0[7:0];
 
             // Staging of $p2_sub.
             always_ff @(posedge clk) FpgaPins_Fpga_TIME_p2_sub_a1 <= FpgaPins_Fpga_TIME_p2_sub_a0;
@@ -239,6 +257,9 @@ logic FpgaPins_Fpga_TIME_time_clk_a0,
 
             // Staging of $time_clk.
             always_ff @(posedge clk) FpgaPins_Fpga_TIME_time_clk_a1 <= FpgaPins_Fpga_TIME_time_clk_a0;
+
+            // Staging of $winner.
+            always_ff @(posedge clk) FpgaPins_Fpga_TIME_winner_a1[1:0] <= FpgaPins_Fpga_TIME_winner_a0[1:0];
 
 
 
@@ -304,10 +325,14 @@ logic FpgaPins_Fpga_TIME_time_clk_a0,
                assign \///@0$ones = FpgaPins_Fpga_TIME_ones_a0;
                (* keep *) logic [7:0] \///@0$p1_ans ;
                assign \///@0$p1_ans = FpgaPins_Fpga_TIME_p1_ans_a0;
+               (* keep *) logic [7:0] \///@0$p1_score ;
+               assign \///@0$p1_score = FpgaPins_Fpga_TIME_p1_score_a0;
                (* keep *) logic  \///@0$p1_sub ;
                assign \///@0$p1_sub = FpgaPins_Fpga_TIME_p1_sub_a0;
                (* keep *) logic [7:0] \///@0$p2_ans ;
                assign \///@0$p2_ans = FpgaPins_Fpga_TIME_p2_ans_a0;
+               (* keep *) logic [7:0] \///@0$p2_score ;
+               assign \///@0$p2_score = FpgaPins_Fpga_TIME_p2_score_a0;
                (* keep *) logic  \///@0$p2_sub ;
                assign \///@0$p2_sub = FpgaPins_Fpga_TIME_p2_sub_a0;
                (* keep *) logic [2:0] \///@0$rand_cnt ;
@@ -324,6 +349,8 @@ logic FpgaPins_Fpga_TIME_time_clk_a0,
                assign \///@0$tens = FpgaPins_Fpga_TIME_tens_a0;
                (* keep *) logic  \///@0$time_clk ;
                assign \///@0$time_clk = FpgaPins_Fpga_TIME_time_clk_a0;
+               (* keep *) logic [1:0] \///@0$winner ;
+               assign \///@0$winner = FpgaPins_Fpga_TIME_winner_a0;
             end
          end
       end
@@ -343,7 +370,7 @@ logic FpgaPins_Fpga_TIME_time_clk_a0,
 //_\TLV
    /* verilator lint_off UNOPTFLAT */
    // Connect Tiny Tapeout I/Os to Virtual FPGA Lab.
-   //_\source /raw.githubusercontent.com/osfpga/VirtualFPGALab/35e36bd144fddd75495d4cbc01c4fc50ac5bde6f/tlvlib/tinytapeoutlib.tlv 76   // Instantiated from top.tlv, 247 as: m5+tt_connections()
+   //_\source /raw.githubusercontent.com/osfpga/VirtualFPGALab/35e36bd144fddd75495d4cbc01c4fc50ac5bde6f/tlvlib/tinytapeoutlib.tlv 76   // Instantiated from top.tlv, 274 as: m5+tt_connections()
       assign L0_slideswitch_a0[7:0] = ui_in;
       assign L0_sseg_segment_n_a0[6:0] = ~ uo_out[6:0];
       assign L0_sseg_decimal_point_n_a0 = ~ uo_out[7];
@@ -351,7 +378,7 @@ logic FpgaPins_Fpga_TIME_time_clk_a0,
    //_\end_source
 
    // Instantiate the Virtual FPGA Lab.
-   //_\source /raw.githubusercontent.com/osfpga/VirtualFPGALab/a069f1e4e19adc829b53237b3e0b5d6763dc3194/tlvlib/fpgaincludes.tlv 307   // Instantiated from top.tlv, 250 as: m5+board(/top, /fpga, 7, $, , my_design)
+   //_\source /raw.githubusercontent.com/osfpga/VirtualFPGALab/a069f1e4e19adc829b53237b3e0b5d6763dc3194/tlvlib/fpgaincludes.tlv 307   // Instantiated from top.tlv, 277 as: m5+board(/top, /fpga, 7, $, , my_design)
       
       //_\source /raw.githubusercontent.com/osfpga/VirtualFPGALab/a069f1e4e19adc829b53237b3e0b5d6763dc3194/tlvlib/fpgaincludes.tlv 355   // Instantiated from /raw.githubusercontent.com/osfpga/VirtualFPGALab/a069f1e4e19adc829b53237b3e0b5d6763dc3194/tlvlib/fpgaincludes.tlv, 309 as: m4+thanks(m5__l(309)m5_eval(m5_get(BOARD_THANKS_ARGS)))
          //_/thanks
@@ -379,7 +406,7 @@ logic FpgaPins_Fpga_TIME_time_clk_a0,
                         FpgaPins_Fpga_TIME_reset_a0 ? 0 :
                         FpgaPins_Fpga_TIME_time_clk_a1 ? 0 :
                         (1 + FpgaPins_Fpga_TIME_cnt_a1);
-            
+                     //time_clk counts the num of cycles equal to 0.1s
                      assign FpgaPins_Fpga_TIME_time_clk_a0 = (FpgaPins_Fpga_TIME_cnt_a0 == 21'b111101000010010000000);
             
                      // 100 in binary 1100100
@@ -460,12 +487,39 @@ logic FpgaPins_Fpga_TIME_time_clk_a0,
                         FpgaPins_Fpga_TIME_p2_sub_a1 ? FpgaPins_Fpga_TIME_p2_ans_a1 :
                         (FpgaPins_Fpga_TIME_btn_a0 == 4'd8) ? {FpgaPins_Fpga_TIME_tens_a0[3:0],FpgaPins_Fpga_TIME_ones_a0[3:0]} :
                         8'd0;
+                     //determines a players score, calculates how far off a player was
+                     assign FpgaPins_Fpga_TIME_p1_score_a0[7:0] =
+                        FpgaPins_Fpga_TIME_reset_a0 || (FpgaPins_Fpga_TIME_btn_a0 == 4'd2) ? 8'd0 :
+                        FpgaPins_Fpga_TIME_p1_sub_a1 ? FpgaPins_Fpga_TIME_p1_score_a1 :
+                        (FpgaPins_Fpga_TIME_p1_ans_a0[7:4]>=FpgaPins_Fpga_TIME_rand_goal_a0[7:4]) && (FpgaPins_Fpga_TIME_p1_ans_a0[3:0]>=FpgaPins_Fpga_TIME_rand_goal_a0[3:0]) ? {FpgaPins_Fpga_TIME_p1_ans_a0[7:4]-FpgaPins_Fpga_TIME_rand_goal_a0[7:4],FpgaPins_Fpga_TIME_p1_ans_a0[3:0]-FpgaPins_Fpga_TIME_rand_goal_a0[3:0]} :
+                        (FpgaPins_Fpga_TIME_p1_ans_a0[7:4]<=FpgaPins_Fpga_TIME_rand_goal_a0[7:4]) && (FpgaPins_Fpga_TIME_p1_ans_a0[3:0]<=FpgaPins_Fpga_TIME_rand_goal_a0[3:0]) ? {FpgaPins_Fpga_TIME_rand_goal_a0[7:4]-FpgaPins_Fpga_TIME_p1_ans_a0[7:4],FpgaPins_Fpga_TIME_rand_goal_a0[3:0]-FpgaPins_Fpga_TIME_p1_ans_a0[3:0]} :
+                        (FpgaPins_Fpga_TIME_p1_ans_a0[7:4]>=FpgaPins_Fpga_TIME_rand_goal_a0[7:4]) && (FpgaPins_Fpga_TIME_p1_ans_a0[3:0]<=FpgaPins_Fpga_TIME_rand_goal_a0[3:0]) ? {FpgaPins_Fpga_TIME_p1_ans_a0[7:4]-FpgaPins_Fpga_TIME_rand_goal_a0[7:4],FpgaPins_Fpga_TIME_rand_goal_a0[3:0]-FpgaPins_Fpga_TIME_p1_ans_a0[3:0]} :
+                        {FpgaPins_Fpga_TIME_rand_goal_a0[7:4]-FpgaPins_Fpga_TIME_p1_ans_a0[7:4],FpgaPins_Fpga_TIME_p1_ans_a0[3:0]-FpgaPins_Fpga_TIME_rand_goal_a0[3:0]};
+                     assign FpgaPins_Fpga_TIME_p2_score_a0[7:0] =
+                        FpgaPins_Fpga_TIME_reset_a0 || (FpgaPins_Fpga_TIME_btn_a0 == 4'd2) ? 8'd0 :
+                        FpgaPins_Fpga_TIME_p2_sub_a1 ? FpgaPins_Fpga_TIME_p2_score_a1 :
+                        (FpgaPins_Fpga_TIME_p2_ans_a0[7:4]>=FpgaPins_Fpga_TIME_rand_goal_a0[7:4]) && (FpgaPins_Fpga_TIME_p2_ans_a0[3:0]>=FpgaPins_Fpga_TIME_rand_goal_a0[3:0]) ? {FpgaPins_Fpga_TIME_p2_ans_a0[7:4]-FpgaPins_Fpga_TIME_rand_goal_a0[7:4],FpgaPins_Fpga_TIME_p2_ans_a0[3:0]-FpgaPins_Fpga_TIME_rand_goal_a0[3:0]} :
+                        (FpgaPins_Fpga_TIME_p2_ans_a0[7:4]<=FpgaPins_Fpga_TIME_rand_goal_a0[7:4]) && (FpgaPins_Fpga_TIME_p2_ans_a0[3:0]<=FpgaPins_Fpga_TIME_rand_goal_a0[3:0]) ? {FpgaPins_Fpga_TIME_rand_goal_a0[7:4]-FpgaPins_Fpga_TIME_p2_ans_a0[7:4],FpgaPins_Fpga_TIME_rand_goal_a0[3:0]-FpgaPins_Fpga_TIME_p2_ans_a0[3:0]} :
+                        (FpgaPins_Fpga_TIME_p2_ans_a0[7:4]>=FpgaPins_Fpga_TIME_rand_goal_a0[7:4]) && (FpgaPins_Fpga_TIME_p2_ans_a0[3:0]<=FpgaPins_Fpga_TIME_rand_goal_a0[3:0]) ? {FpgaPins_Fpga_TIME_p2_ans_a0[7:4]-FpgaPins_Fpga_TIME_rand_goal_a0[7:4],FpgaPins_Fpga_TIME_rand_goal_a0[3:0]-FpgaPins_Fpga_TIME_p2_ans_a0[3:0]} :
+                        {FpgaPins_Fpga_TIME_rand_goal_a0[7:4]-FpgaPins_Fpga_TIME_p2_ans_a0[7:4],FpgaPins_Fpga_TIME_p2_ans_a0[3:0]-FpgaPins_Fpga_TIME_rand_goal_a0[3:0]};
+                     //determines the winner of the game, 0 is a tie, 1 is player 1, 2 is player 2
+                     assign FpgaPins_Fpga_TIME_winner_a0[1:0] =
+                        FpgaPins_Fpga_TIME_reset_a0 || (FpgaPins_Fpga_TIME_btn_a0 == 4'd2) ? 2'd0 :
+                        FpgaPins_Fpga_TIME_p1_sub_a1 && FpgaPins_Fpga_TIME_p2_sub_a1 ? FpgaPins_Fpga_TIME_winner_a1 :
+                        FpgaPins_Fpga_TIME_p1_score_a0[7:4]>FpgaPins_Fpga_TIME_p2_score_a0[7:4] ? 2'd2 :
+                        FpgaPins_Fpga_TIME_p1_score_a0[7:4]<FpgaPins_Fpga_TIME_p2_score_a0[7:4] ? 2'd1 :
+                        FpgaPins_Fpga_TIME_p1_score_a0[3:0]>FpgaPins_Fpga_TIME_p2_score_a0[3:0] ? 2'd2 :
+                        FpgaPins_Fpga_TIME_p1_score_a0[3:0]<FpgaPins_Fpga_TIME_p2_score_a0[3:0] ? 2'd1 :
+                        2'd0;
             
                      assign FpgaPins_Fpga_TIME_digit_a0[3:0] =
                         FpgaPins_Fpga_TIME_clk_disp_a0 && FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && (FpgaPins_Fpga_TIME_btn_a0 == 4'd5) ? FpgaPins_Fpga_TIME_p1_ans_a0[7:4] :
                         FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && (FpgaPins_Fpga_TIME_btn_a0 == 4'd5) ? FpgaPins_Fpga_TIME_p1_ans_a0[3:0] :
                         FpgaPins_Fpga_TIME_clk_disp_a0 && FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && (FpgaPins_Fpga_TIME_btn_a0 == 4'd9) ? FpgaPins_Fpga_TIME_p2_ans_a0[7:4] :
                         FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && (FpgaPins_Fpga_TIME_btn_a0 == 4'd9) ? FpgaPins_Fpga_TIME_p2_ans_a0[3:0] :
+                        FpgaPins_Fpga_TIME_clk_disp_a0 && FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && (FpgaPins_Fpga_TIME_winner_a0 == 2'd0) ? 4'd0 :
+                        FpgaPins_Fpga_TIME_clk_disp_a0 && FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && (FpgaPins_Fpga_TIME_winner_a0 == 2'd1) ? 4'd1 :
+                        FpgaPins_Fpga_TIME_clk_disp_a0 && FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && (FpgaPins_Fpga_TIME_winner_a0 == 2'd2) ? 4'd2 :
                         FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 ? 4'd11 :
                         FpgaPins_Fpga_TIME_clk_disp_a0 ? FpgaPins_Fpga_TIME_tens_a0 :
                         FpgaPins_Fpga_TIME_ones_a0;
@@ -529,7 +583,7 @@ logic FpgaPins_Fpga_TIME_time_clk_a0,
       
    //_\end_source
    // Label the switch inputs [0..7] (1..8 on the physical switch panel) (top-to-bottom).
-   //_\source /raw.githubusercontent.com/osfpga/VirtualFPGALab/35e36bd144fddd75495d4cbc01c4fc50ac5bde6f/tlvlib/tinytapeoutlib.tlv 82   // Instantiated from top.tlv, 252 as: m5+tt_input_labels_viz(⌈"UNUSED", "UNUSED", "UNUSED", "UNUSED", "UNUSED", "UNUSED", "UNUSED", "UNUSED"⌉)
+   //_\source /raw.githubusercontent.com/osfpga/VirtualFPGALab/35e36bd144fddd75495d4cbc01c4fc50ac5bde6f/tlvlib/tinytapeoutlib.tlv 82   // Instantiated from top.tlv, 279 as: m5+tt_input_labels_viz(⌈"UNUSED", "UNUSED", "UNUSED", "UNUSED", "UNUSED", "UNUSED", "UNUSED", "UNUSED"⌉)
       for (input_label = 0; input_label <= 7; input_label++) begin : L1_InputLabel //_/input_label
          
       end
