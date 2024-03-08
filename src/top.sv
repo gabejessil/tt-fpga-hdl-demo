@@ -500,8 +500,8 @@ logic [1:0] FpgaPins_Fpga_TIME_winner_a0,
                         (FpgaPins_Fpga_TIME_btn_a0 == 4'd0) && !FpgaPins_Fpga_TIME_start_a0 ? FpgaPins_Fpga_TIME_rand_goal_a0[7:4] :
                         (FpgaPins_Fpga_TIME_start_a1 == 0) && FpgaPins_Fpga_TIME_start_a0 ? 4'd0 :
                         (FpgaPins_Fpga_TIME_ones_a1 == 4'd9) && (FpgaPins_Fpga_TIME_tens_a1 == 4'd9) ? 4'd9 :
-                        (FpgaPins_Fpga_TIME_sec_cnt_a0 == 4'd10) && (FpgaPins_Fpga_TIME_tens_a1 != 4'd9) && FpgaPins_Fpga_TIME_start_a0 ? (FpgaPins_Fpga_TIME_tens_a1 + 4'd1) :
-                        (FpgaPins_Fpga_TIME_sec_cnt_a0 == 4'd10) && (FpgaPins_Fpga_TIME_tens_a1 == 4'd9) && FpgaPins_Fpga_TIME_start_a0 ? 4'd0 :
+                        (FpgaPins_Fpga_TIME_sec_cnt_a1 == 4'd10) && (FpgaPins_Fpga_TIME_tens_a1 != 4'd9) && FpgaPins_Fpga_TIME_start_a0 ? (FpgaPins_Fpga_TIME_tens_a1 + 4'd1) :
+                        (FpgaPins_Fpga_TIME_sec_cnt_a1 == 4'd10) && (FpgaPins_Fpga_TIME_tens_a1 == 4'd9) && FpgaPins_Fpga_TIME_start_a0 ? 4'd0 :
                         FpgaPins_Fpga_TIME_tens_a1;
                      //after X time disp hides so player can asnwer
                      assign FpgaPins_Fpga_TIME_hide_a0 =
