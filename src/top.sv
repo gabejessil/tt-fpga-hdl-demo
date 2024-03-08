@@ -552,10 +552,10 @@ logic [1:0] FpgaPins_Fpga_TIME_winner_a0,
                         FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && (FpgaPins_Fpga_TIME_btn_a0 == 4'd5) ? FpgaPins_Fpga_TIME_p1_ans_a0[3:0] :
                         FpgaPins_Fpga_TIME_clk_disp_a0 && FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && (FpgaPins_Fpga_TIME_btn_a0 == 4'd9) ? FpgaPins_Fpga_TIME_p2_ans_a0[7:4] :
                         FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && (FpgaPins_Fpga_TIME_btn_a0 == 4'd9) ? FpgaPins_Fpga_TIME_p2_ans_a0[3:0] :
-                        FpgaPins_Fpga_TIME_clk_disp_a0 && FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && (FpgaPins_Fpga_TIME_winner_a0 == 2'd0) ? 4'd0 :
-                        FpgaPins_Fpga_TIME_clk_disp_a0 && FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && (FpgaPins_Fpga_TIME_winner_a0 == 2'd1) ? 4'd1 :
-                        FpgaPins_Fpga_TIME_clk_disp_a0 && FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && (FpgaPins_Fpga_TIME_winner_a0 == 2'd2) ? 4'd2 :
-                        FpgaPins_Fpga_TIME_clk_disp_a0 && FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && (FpgaPins_Fpga_TIME_winner_a0 == 2'd3) ? 4'd3 :
+                        FpgaPins_Fpga_TIME_clk_disp_a0 && FpgaPins_Fpga_TIME_p1_sub_a2 && FpgaPins_Fpga_TIME_p2_sub_a2 && (FpgaPins_Fpga_TIME_winner_a0 == 2'd0) ? 4'd0 :
+                        FpgaPins_Fpga_TIME_clk_disp_a0 && FpgaPins_Fpga_TIME_p1_sub_a2 && FpgaPins_Fpga_TIME_p2_sub_a2 && (FpgaPins_Fpga_TIME_winner_a0 == 2'd1) ? 4'd1 :
+                        FpgaPins_Fpga_TIME_clk_disp_a0 && FpgaPins_Fpga_TIME_p1_sub_a2 && FpgaPins_Fpga_TIME_p2_sub_a2 && (FpgaPins_Fpga_TIME_winner_a0 == 2'd2) ? 4'd2 :
+                        FpgaPins_Fpga_TIME_clk_disp_a0 && FpgaPins_Fpga_TIME_p1_sub_a2 && FpgaPins_Fpga_TIME_p2_sub_a2 && (FpgaPins_Fpga_TIME_winner_a0 == 2'd3) ? 4'd3 :
                         FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 ? 4'd11 :
                         FpgaPins_Fpga_TIME_clk_disp_a0 ? FpgaPins_Fpga_TIME_tens_a0 :
                         FpgaPins_Fpga_TIME_ones_a0;
