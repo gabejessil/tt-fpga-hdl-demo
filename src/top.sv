@@ -500,8 +500,8 @@ logic [1:0] FpgaPins_Fpga_TIME_winner_a0,
                         (FpgaPins_Fpga_TIME_btn_a0 == 4'd0) && !FpgaPins_Fpga_TIME_start_a0 ? FpgaPins_Fpga_TIME_rand_goal_a0[7:4] :
                         (FpgaPins_Fpga_TIME_start_a1 == 0) && FpgaPins_Fpga_TIME_start_a0 ? 4'd0 :
                         (FpgaPins_Fpga_TIME_ones_a1 == 4'd9) && (FpgaPins_Fpga_TIME_tens_a1 == 4'd9) ? 4'd9 :
-                        (FpgaPins_Fpga_TIME_sec_cnt_a1 == 4'd10) && (FpgaPins_Fpga_TIME_tens_a1 != 4'd9) && FpgaPins_Fpga_TIME_start_a0 ? (FpgaPins_Fpga_TIME_tens_a1 + 4'd1) :
-                        (FpgaPins_Fpga_TIME_sec_cnt_a1 == 4'd10) && (FpgaPins_Fpga_TIME_tens_a1 == 4'd9) && FpgaPins_Fpga_TIME_start_a0 ? 4'd0 :
+                        (FpgaPins_Fpga_TIME_sec_cnt_a0 == 4'd10) && (FpgaPins_Fpga_TIME_tens_a1 != 4'd9) && FpgaPins_Fpga_TIME_start_a0 ? (FpgaPins_Fpga_TIME_tens_a1 + 4'd1) :
+                        (FpgaPins_Fpga_TIME_sec_cnt_a0 == 4'd10) && (FpgaPins_Fpga_TIME_tens_a1 == 4'd9) && FpgaPins_Fpga_TIME_start_a0 ? 4'd0 :
                         FpgaPins_Fpga_TIME_tens_a1;
                      //after X time disp hides so player can asnwer
                      assign FpgaPins_Fpga_TIME_hide_a0 =
@@ -539,11 +539,11 @@ logic [1:0] FpgaPins_Fpga_TIME_winner_a0,
                      assign FpgaPins_Fpga_TIME_winner_a0[1:0] =
                         FpgaPins_Fpga_TIME_reset_a0 || (FpgaPins_Fpga_TIME_btn_a0 == 4'd2) ? 2'd3 :
                         FpgaPins_Fpga_TIME_p1_sub_a5 && FpgaPins_Fpga_TIME_p2_sub_a5 ? FpgaPins_Fpga_TIME_winner_a1 :
-                        FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && FpgaPins_Fpga_TIME_p1_score_a0[7:4]>FpgaPins_Fpga_TIME_p2_score_a0[7:4] ? 2'd2 :
-                        FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && FpgaPins_Fpga_TIME_p1_score_a0[7:4]<FpgaPins_Fpga_TIME_p2_score_a0[7:4] ? 2'd1 :
-                        FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && FpgaPins_Fpga_TIME_p1_score_a0[3:0]>FpgaPins_Fpga_TIME_p2_score_a0[3:0] ? 2'd2 :
-                        FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && FpgaPins_Fpga_TIME_p1_score_a0[3:0]<FpgaPins_Fpga_TIME_p2_score_a0[3:0] ? 2'd1 :
-                        FpgaPins_Fpga_TIME_p1_sub_a0 && FpgaPins_Fpga_TIME_p2_sub_a0 && FpgaPins_Fpga_TIME_p1_score_a0[7:0]==FpgaPins_Fpga_TIME_p2_score_a0[7:0] ? 2'd0 :
+                        FpgaPins_Fpga_TIME_p1_sub_a3 && FpgaPins_Fpga_TIME_p2_sub_a3 && FpgaPins_Fpga_TIME_p1_score_a0[7:4]>FpgaPins_Fpga_TIME_p2_score_a0[7:4] ? 2'd2 :
+                        FpgaPins_Fpga_TIME_p1_sub_a3 && FpgaPins_Fpga_TIME_p2_sub_a3 && FpgaPins_Fpga_TIME_p1_score_a0[7:4]<FpgaPins_Fpga_TIME_p2_score_a0[7:4] ? 2'd1 :
+                        FpgaPins_Fpga_TIME_p1_sub_a3 && FpgaPins_Fpga_TIME_p2_sub_a3 && FpgaPins_Fpga_TIME_p1_score_a0[3:0]>FpgaPins_Fpga_TIME_p2_score_a0[3:0] ? 2'd2 :
+                        FpgaPins_Fpga_TIME_p1_sub_a3 && FpgaPins_Fpga_TIME_p2_sub_a3 && FpgaPins_Fpga_TIME_p1_score_a0[3:0]<FpgaPins_Fpga_TIME_p2_score_a0[3:0] ? 2'd1 :
+                        FpgaPins_Fpga_TIME_p1_sub_a3 && FpgaPins_Fpga_TIME_p2_sub_a3 && FpgaPins_Fpga_TIME_p1_score_a0[7:0]==FpgaPins_Fpga_TIME_p2_score_a0[7:0] ? 2'd0 :
                         2'd3;
             
                      assign FpgaPins_Fpga_TIME_digit_a0[3:0] =
