@@ -461,12 +461,12 @@ logic [1:0] FpgaPins_Fpga_TIME_winner_a0,
                      //game is paused when user clicks button 2
                      assign FpgaPins_Fpga_TIME_p1_sub_a0 =
                         FpgaPins_Fpga_TIME_reset_a0 || (FpgaPins_Fpga_TIME_btn_a0 == 4'd2) ? 0 :
-                        FpgaPins_Fpga_TIME_start_a0 && (FpgaPins_Fpga_TIME_btn_a0 == 4'd4) ? 1 :
+                        FpgaPins_Fpga_TIME_start_a0 && ((FpgaPins_Fpga_TIME_btn_a0 == 4'd4) || (FpgaPins_Fpga_TIME_btn_a0 == 4'd12)) ? 1 :
                         FpgaPins_Fpga_TIME_p1_sub_a1;
                      //game is paused when user clicks button 3 (2 player)
                      assign FpgaPins_Fpga_TIME_p2_sub_a0 =
                         FpgaPins_Fpga_TIME_reset_a0 || (FpgaPins_Fpga_TIME_btn_a0 == 4'd2) ? 0 :
-                        FpgaPins_Fpga_TIME_start_a0 && (FpgaPins_Fpga_TIME_btn_a0 == 4'd8) ? 1 :
+                        FpgaPins_Fpga_TIME_start_a0 && ((FpgaPins_Fpga_TIME_btn_a0 == 4'd8) || (FpgaPins_Fpga_TIME_btn_a0 == 4'd12)) ? 1 :
                         FpgaPins_Fpga_TIME_p2_sub_a1;
                      //random counter to select goal time
                      assign FpgaPins_Fpga_TIME_rand_cnt_a0[2:0] =
@@ -514,12 +514,12 @@ logic [1:0] FpgaPins_Fpga_TIME_winner_a0,
                      assign FpgaPins_Fpga_TIME_p1_ans_a0[7:0] =
                         FpgaPins_Fpga_TIME_reset_a0 || (FpgaPins_Fpga_TIME_btn_a0 == 4'd2) ? 8'd0 :
                         FpgaPins_Fpga_TIME_p1_sub_a1 ? FpgaPins_Fpga_TIME_p1_ans_a1 :
-                        (FpgaPins_Fpga_TIME_btn_a0 == 4'd4) && FpgaPins_Fpga_TIME_start_a0 ? {FpgaPins_Fpga_TIME_tens_a1[3:0],FpgaPins_Fpga_TIME_ones_a1[3:0]} :
+                        ((FpgaPins_Fpga_TIME_btn_a0 == 4'd4) || (FpgaPins_Fpga_TIME_btn_a0 == 4'd12)) && FpgaPins_Fpga_TIME_start_a0 ? {FpgaPins_Fpga_TIME_tens_a1[3:0],FpgaPins_Fpga_TIME_ones_a1[3:0]} :
                         FpgaPins_Fpga_TIME_p1_ans_a1;
                      assign FpgaPins_Fpga_TIME_p2_ans_a0[7:0] =
                         FpgaPins_Fpga_TIME_reset_a0 || (FpgaPins_Fpga_TIME_btn_a0 == 4'd2) ? 8'd0 :
                         FpgaPins_Fpga_TIME_p2_sub_a1 ? FpgaPins_Fpga_TIME_p2_ans_a1 :
-                        (FpgaPins_Fpga_TIME_btn_a0 == 4'd8) && FpgaPins_Fpga_TIME_start_a0 ? {FpgaPins_Fpga_TIME_tens_a1[3:0],FpgaPins_Fpga_TIME_ones_a1[3:0]} :
+                        ((FpgaPins_Fpga_TIME_btn_a0 == 4'd8) || (FpgaPins_Fpga_TIME_btn_a0 == 4'd12)) && FpgaPins_Fpga_TIME_start_a0 ? {FpgaPins_Fpga_TIME_tens_a1[3:0],FpgaPins_Fpga_TIME_ones_a1[3:0]} :
                         FpgaPins_Fpga_TIME_p2_ans_a1;
                      //determines a players score, calculates how far off a player was
                      assign FpgaPins_Fpga_TIME_p1_score_a0[7:0] =
